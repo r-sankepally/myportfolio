@@ -252,12 +252,6 @@ export const artifacts = [
 
 export const portfolioBlocks = [
   {
-    id: "block-01",
-    tag: "block 01",
-    title: "Featured Systems & Architectures",
-    description: "Deep dive into selected production systems, autonomous agents, and cloud distributed tools."
-  },
-  {
     id: "block-02",
     tag: "block 02",
     title: "Technical Arsenal & Core Stack",

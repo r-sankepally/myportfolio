@@ -60,12 +60,9 @@ export default function HeroSection({ onSelectArtifact, onOpenArtifactsPage }) {
       </div>
 
       {/* ==============================================================
-          LOWER SECTION: Stacked Blocks (block 01, block 02, block 03)
+          LOWER SECTION: Stacked Blocks (block 02, block 03)
           ============================================================== */}
-      <PortfolioBlocks
-        onSelectArtifact={onSelectArtifact}
-        onOpenArtifactsPage={onOpenArtifactsPage}
-      />
+      <PortfolioBlocks />
     </div>
   );
 }
