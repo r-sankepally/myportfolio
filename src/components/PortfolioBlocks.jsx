@@ -1,5 +1,5 @@
 import React from 'react';
-import { skillCategories, textBlock } from '../data/portfolioData';
+import { skillCategories, textBlock, blockEducation } from '../data/portfolioData';
 import { Terminal, Code2, Server, Cpu, Cloud } from 'lucide-react';
 
 const categoryIcons = {
@@ -13,17 +13,34 @@ export default function PortfolioBlocks() {
   return (
     <div className="portfolio-blocks-container">
       {/* ==============================================================
+          BLOCK: Custom Text Block with Heading
+          ============================================================== */}
+      <section className="portfolio-block" id="block-text">
+        <div className="block-content">
+          <div className="block-header-info">
+            <h2 className="block-title">{textBlock.heading}</h2>
+            {textBlock.subheading && (
+              <p className="block-subtitle">{textBlock.subheading}</p>
+            )}
+          </div>
+
+          <div className="custom-text-block-body">
+            {textBlock.paragraphs.map((paragraph, idx) => (
+              <p key={idx} className="custom-text-paragraph">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* ==============================================================
           BLOCK: Technical Arsenal & Skills
           ============================================================== */}
       <section className="portfolio-block" id="block-skills">
         <div className="block-content">
           <div className="block-header-info">
-            <h2 className="block-title">Technical Arsenal & Core Stack</h2>
-            <p className="block-subtitle">
-              Languages, runtimes, distributed tools, and frameworks used to engineer resilient systems.
-            </p>
+            <h2 className="block-title">Technical Stack</h2>
           </div>
-
           <div className="skills-grid">
             {skillCategories.map((cat, idx) => (
               <div key={idx} className="skill-card glass-card">
@@ -43,21 +60,20 @@ export default function PortfolioBlocks() {
           </div>
         </div>
       </section>
-
       {/* ==============================================================
           BLOCK: Custom Text Block with Heading
           ============================================================== */}
-      <section className="portfolio-block" id="block-text">
+      <section className="portfolio-block" id="block-education">
         <div className="block-content">
           <div className="block-header-info">
-            <h2 className="block-title">{textBlock.heading}</h2>
-            {textBlock.subheading && (
-              <p className="block-subtitle">{textBlock.subheading}</p>
+            <h2 className="block-title">Education</h2>
+            {blockEducation.subheading && (
+              <p className="block-subtitle">test</p>
             )}
           </div>
 
           <div className="custom-text-block-body">
-            {textBlock.paragraphs.map((paragraph, idx) => (
+            {blockEducation.paragraphs.map((paragraph, idx) => (
               <p key={idx} className="custom-text-paragraph">
                 {paragraph}
               </p>

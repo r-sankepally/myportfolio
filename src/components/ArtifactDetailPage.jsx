@@ -137,9 +137,9 @@ export default function ArtifactDetailPage({
             {artifact.date}
           </span>
           <span className="footer-dot">•</span>
-          <span className="badge" style={{ color: 'var(--accent-blue)', borderColor: 'var(--border-glow)' }}>
+          {/*<span className="badge" style={{ color: 'var(--accent-blue)', borderColor: 'var(--border-glow)' }}>
             {artifact.status}
-          </span>
+          </span>*/}
         </div>
 
         <h1 className="artifact-detail-title">

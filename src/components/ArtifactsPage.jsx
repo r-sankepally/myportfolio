@@ -49,11 +49,11 @@ export default function ArtifactsPage({ onSelectArtifact, onBackHome }) {
           <span className="section-tag">// Digital Repository</span>
         </div>
         <h1 className="section-title">
-          Artifacts & <span className="text-gradient">Engineering Systems</span>
+          Artifacts & <span className="text-gradient">Solutions</span>
         </h1>
-        <p className="section-subtitle">
+        {/*<p className="section-subtitle">
           An interactive archive of research prototypes, production software, distributed architectures, and developer tooling.
-        </p>
+        </p>*/}
       </div>
 
       {/* Search and Category Filter Controls */}
@@ -149,9 +149,9 @@ export default function ArtifactsPage({ onSelectArtifact, onBackHome }) {
                   className="artifact-thumb"
                   loading="lazy"
                 />
-                <span className="artifact-badge-status">
+                {/*<span className="artifact-badge-status">
                   {artifact.status}
-                </span>
+                </span>*/}
               </div>
 
               {/* Body */}
@@ -170,7 +170,7 @@ export default function ArtifactsPage({ onSelectArtifact, onBackHome }) {
                 </div>
 
                 {/* Metrics pill */}
-                {artifact.metrics && (
+                {/*{artifact.metrics && (
                   <div
                     style={{
                       fontSize: '0.75rem',
@@ -184,7 +184,7 @@ export default function ArtifactsPage({ onSelectArtifact, onBackHome }) {
                   >
                     ⚡ {artifact.metrics}
                   </div>
-                )}
+                )} */}
 
                 {/* Footer action */}
                 <div className="artifact-footer">

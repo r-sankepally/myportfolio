@@ -12,12 +12,12 @@ export const personalInfo = {
   lastName: "SANKEPALLY",
   name: "Rajashekar Reddy SANKEPALLY",
   role: "Software Engineer",
-  titleDisplay: "Software Engineer",
+  titleDisplay: "Masters: AI - Data analytics(In-Progress)",
   greetingDisplay: "Hi, I'm Rajashekar Reddy SANKEPALLY", // Or "<Firstname> <Lastname>"
 
   passionTitle: "",
   passionLines: [
-    "I am passionate about architecting distributed systems, autonomous AI agents, and high-throughput real-time backends. Building accessible, performant interfaces and developer tooling that empower engineering teams."
+    "I am passionate about leveraging AI and Machine Learning to create solutions for highly efficient Business Operations."
   ],
 
   location: "San Francisco, CA (Open to Remote)",
@@ -48,27 +48,8 @@ export const socialLinks = {
   github: "https://github.com",
   linkedin: "https://linkedin.com",
   twitter: "https://twitter.com",
-  email: "alex.rivera.dev@example.com"
+  email: "rajashekarreddy2010@gmail.com"
 };
-
-export const skillCategories = [
-  {
-    category: "Frontend & UI",
-    skills: ["React 19", "TypeScript", "Vite", "Tailwind CSS", "Next.js", "WebSockets", "Canvas API", "CSS Modules"]
-  },
-  {
-    category: "Backend & Systems",
-    skills: ["Node.js", "Python / FastAPI", "Go", "GraphQL", "REST APIs", "gRPC", "Microservices"]
-  },
-  {
-    category: "AI & Autonomous Agents",
-    skills: ["LLM Orchestration", "LangChain / LlamaIndex", "Vector DBs (Pinecone, Chroma)", "RAG Pipelines", "Function Calling"]
-  },
-  {
-    category: "Cloud, Data & DevOps",
-    skills: ["PostgreSQL", "Redis", "Docker & K8s", "AWS / GCP", "GitHub Actions CI/CD", "Vercel / Cloudflare"]
-  }
-];
 
 export const experienceTimeline = [
   {
@@ -104,115 +85,19 @@ export const artifactCategories = [
 
 export const artifacts = [
   {
-    id: "autonomous-agent-engine",
+    id: "ai-timeline",
     shortCode: "Artifact_01",
-    title: "Autonomous Multi-Agent Workflow Engine",
-    displayTitle: "Artifact_01: Agentic Workflow Engine",
+    title: "Artificial Intelligence Evolution & Key Milestones",
+    displayTitle: "Artificial Intelligence Evolution & Key Milestones",
     category: "AI & Agents",
-    shortDescription: "A distributed orchestration runtime that empowers teams of autonomous AI agents to collaborate, plan, and execute multi-step workflows.",
-    fullDescription: "A production-grade multi-agent runtime designed for complex asynchronous reasoning, task delegation, and external tool execution. Built with fault-tolerant state recovery, hierarchical supervisor models, and human-in-the-loop inspection mechanisms.",
-    image: "./artifacts/artifact-agentic-engine.svg",
-    date: "Oct 02, 2026",
-    status: "Featured Artifact",
-    statusColor: "emerald",
-    tags: ["TypeScript", "Python", "Vector Memory", "LLM Tooling", "Distributed Runtime"],
-    metrics: "450k+ runs executed • <250ms node dispatch • 99.9% task reliability",
-    keyFeatures: [
-      "Dynamic agent topology synthesis based on runtime objective breakdown",
-      "Vector episodic memory indexing with hybrid semantic and reciprocal rank search",
-      "Sandboxed environment runner supporting deterministic code execution and rollback",
-      "Interactive debugger and live execution DAG visualizer"
-    ],
-    liveUrl: "https://github.com",
-    githubUrl: "https://github.com",
-    featured: true
-  },
-  {
-    id: "neural-creative-canvas",
-    shortCode: "Artifact_02",
-    title: "Real-Time Neural Creative Canvas",
-    displayTitle: "Artifact_02: Neural Creative Canvas",
-    category: "Web Applications",
-    shortDescription: "Interactive WebGL-accelerated infinite whiteboard with generative AI copilot, real-time multi-cursor syncing, and spatial audio notes.",
-    fullDescription: "A fluid, infinite vector canvas designed for creative and architectural collaboration. Combines custom 60 FPS WebGL rendering with real-time CRDT state synchronization, enabling thousands of simultaneous collaborative edits without server bottlenecks.",
-    image: "./artifacts/artifact-neural-canvas.svg",
-    date: "Oct 03, 2026",
-    status: "Live Production",
-    statusColor: "blue",
-    tags: ["React", "WebGL", "CRDTs", "WebSockets", "Tailwind CSS"],
-    metrics: "60 FPS rendering • <15ms peer latency • 80k+ monthly boards created",
-    keyFeatures: [
-      "Custom hardware-accelerated pan/zoom canvas handling 50,000+ vector shapes",
-      "Conflict-free replicated data types (Yjs) powering offline-first collaborative edits",
-      "Context-aware generative layout engine proposing UI wireframes on the fly",
-      "Zero-latency optimistic UI updates with deterministic undo/redo history"
-    ],
-    liveUrl: "https://github.com",
-    githubUrl: "https://github.com",
-    featured: true
-  },
-  {
-    id: "cloud-pipeline-orchestrator",
-    shortCode: "Artifact_03",
-    title: "Distributed Cloud Pipeline Orchestrator",
-    displayTitle: "Artifact_03: Cloud Orchestrator CLI",
-    category: "Developer Tools",
-    shortDescription: "Declarative CI/CD & cloud infrastructure orchestrator featuring instant DAG visualization and zero-downtime rolling canary deployments.",
-    fullDescription: "An ergonomic developer CLI and control plane that abstracts complex Kubernetes and cloud native deployments into elegant declarative manifests. Includes live telemetry streaming and automatic rollbacks on anomalous latency spikes.",
-    image: "./artifacts/artifact-cloud-orchestrator.svg",
-    date: "Oct 12, 2026",
-    status: "Open Source",
-    statusColor: "purple",
-    tags: ["Go", "Kubernetes", "gRPC", "Docker", "Prometheus"],
-    metrics: "12k+ GitHub stars • 4x faster CI stages • 0 downtime rollouts",
-    keyFeatures: [
-      "Declarative YAML specification with compile-time topological sort validation",
-      "Sub-second container image layer caching and differential deduplication",
-      "Automated canary testing with automated rollback triggers based on p99 metrics",
-      "Extensible plugin system via WebAssembly (Wasm) runtimes"
-    ],
-    liveUrl: "https://github.com",
-    githubUrl: "https://github.com",
-    featured: true
-  },
-  {
-    id: "raft-consensus-kv-store",
-    shortCode: "Artifact_04",
-    title: "High-Throughput Raft Distributed KV Store",
-    displayTitle: "Artifact_04: Raft Consensus KV Store",
-    category: "Systems & Infrastructure",
-    shortDescription: "Fault-tolerant key-value database implementing Raft consensus protocol with Log-Structured Merge (LSM) storage engine.",
-    fullDescription: "An exploratory distributed storage engine engineered to deeply study consensus algorithms under extreme network partitions and chaos engineering conditions. Achieves high linearizable write throughput through batched fsync and zero-copy serialization.",
-    image: "./artifacts/artifact-kv-store.svg",
-    date: "Oct 18, 2026",
-    status: "Research Prototype",
-    statusColor: "teal",
-    tags: ["Go", "Raft Consensus", "LSM-Tree", "Distributed Systems", "Protobuf"],
-    metrics: "120,000 writes/sec • Linearizable consistency (Jepsen tested) • 3ms cluster consensus",
-    keyFeatures: [
-      "Strict leader election and heartbeat leases with randomized election jitter",
-      "Compact write-ahead logging (WAL) with incremental background snapshots",
-      "Custom memtable and bloom-filter backed SSTables for microsecond point lookups",
-      "Simulated Byzantine fault injection harness for automated fuzz testing"
-    ],
-    liveUrl: "https://github.com",
-    githubUrl: "https://github.com",
-    featured: false
-  },
-  {
-    id: "quantum-design-system",
-    shortCode: "Artifact_05",
-    title: "Quantum Design System & Component Studio",
-    displayTitle: "Artifact_05: Quantum Design System",
-    category: "Web Applications",
     shortDescription: "Accessible, themeable, enterprise-grade design system featuring 40+ components with automatic token generation and WCAG AAA compliance.",
     fullDescription: "A comprehensive design system and component architecture built for modern web applications. Provides unified design token synchronization between Figma and code, seamless dark/light modes, keyboard navigation, and zero-runtime CSS footprint.",
-    image: "./artifacts/artifact-design-system.svg",
-    date: "Oct 24, 2026",
-    status: "Live Package",
+    image: "./artifacts/1950.png",
+    date: "Nov 2, 2026",
+    status: "",
     statusColor: "emerald",
-    tags: ["React", "CSS Architecture", "Accessibility (a11y)", "Design Tokens", "Figma API"],
-    metrics: "40+ Accessible Components • 100% WCAG AAA Compliant • <12kB bundle size",
+    tags: ["AI"],
+    metrics: " ",
     keyFeatures: [
       "Dynamic theme switching with semantic CSS custom properties and high-contrast support",
       "Comprehensive keyboard accessibility, ARIA patterns, and screen reader announcements",
@@ -221,21 +106,21 @@ export const artifacts = [
     ],
     liveUrl: "https://github.com",
     githubUrl: "https://github.com",
-    featured: false
+    featured: true
   },
   {
-    id: "realtime-market-intelligence",
+    id: "ai-chatbot",
     shortCode: "Artifact_06",
-    title: "High-Frequency Market Streaming Engine",
+    title: "AI Chatbot: Mindfulness Journey",
     displayTitle: "Artifact_06: Market Streaming Engine",
-    category: "Systems & Infrastructure",
+    category: "AI & Agents",
     shortDescription: "Ultra-low latency financial data pipeline aggregating streaming tick data, sentiment analysis, and order-book heatmaps.",
     fullDescription: "Engineered to ingest and visualize real-time crypto and equity market streams with sub-10ms browser rendering. Uses binary WebSocket protocols and client-side web workers to offload calculations from the main UI thread.",
-    image: "./artifacts/artifact-market-intelligence.svg",
-    date: "Oct 29, 2026",
+    image: "./artifacts/ai-chatbot-thumb.png",
+    date: "Nov 2, 2026",
     status: "Production Demo",
     statusColor: "blue",
-    tags: ["Python", "Rust", "WebSockets", "Web Workers", "TradingView Lightweight"],
+    tags: ["AI", "Production-Demo"],
     metrics: "50,000 messages/sec • <8ms round-trip latency • Zero dropped frames",
     keyFeatures: [
       "High-throughput WebSocket ingestion engine with automatic reconnect backoff",
@@ -249,24 +134,52 @@ export const artifacts = [
   }
 ];
 
-export const textBlock = {
-  heading: "About My Work & Philosophy",
+/**
+ export const textBlock = {
+  heading: "Personal Value Proposition",
   subheading: "Principles, methodology, and technical focus.",
   paragraphs: [
     "I believe great software is defined by clarity, resilience, and obsessive attention to performance. Over the past 6+ years, my work has centered on architecting scalable backends, real-time collaboration engines, and autonomous agent workflows.",
     "My engineering philosophy emphasizes simple mental models over clever complexity, comprehensive end-to-end type safety, and building accessible, fast web experiences that empower users."
   ]
 };
-
+*/
+export const textBlock = {
+  heading: "Personal Value Proposition",
+  paragraphs: [
+    "AI/ML Master's student dedicated to data-centric AI. I specialize in designing robust feature engineering pipelines and predictive models that transform messy, real-world data into high-accuracy business forecasts and automated decision systems."
+  ]
+};
+export const skillCategories = [
+  {
+    category: "Database",
+    skills: ["SAP HANA", "Oracle", "Postgres", "Sybase", "DB2"]
+  },
+  {
+    category: "Cloud, Data & DevOps",
+    skills: ["AWS", "Azure", "GCP"]
+  }
+];
+export const blockEducation = {
+  heading: "Education",
+  paragraphs: [
+    "Currently pursuing Masters in Artificial Intelligence and Data Analytics. Focussing on developing practical applications that combine technical expertise with ethical considerations. My Coursework includes hands-on experience with cutting-edge AI tools, prompt engineering and collaborative problem-solving."
+  ]
+};
 export const portfolioBlocks = [
+  {
+    id: "block-text",
+    title: "Personal Value Proposition",
+    description: "Custom text section with heading and detailed overview."
+  },
   {
     id: "block-skills",
     title: "Technical Arsenal & Core Stack",
     description: "Frameworks, languages, cloud platforms, and protocols used across projects."
   },
   {
-    id: "block-text",
-    title: "About My Work & Philosophy",
+    id: "block-education",
+    title: "Education",
     description: "Custom text section with heading and detailed overview."
   }
 ];
