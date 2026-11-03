@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
   ArrowLeft,
-  ExternalLink,
-  Github,
   CheckCircle2,
   Zap,
   Calendar,
@@ -95,33 +93,6 @@ export default function ArtifactDetailPage({
         <p className="artifact-detail-subtitle">
           {artifact.shortDescription}
         </p>
-
-        {/* Action Buttons Top */}
-        <div className="artifact-detail-actions">
-          {artifact.liveUrl && (
-            <a
-              href={artifact.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
-            >
-              <span>Launch Live Demo</span>
-              <ExternalLink size={16} />
-            </a>
-          )}
-
-          {artifact.githubUrl && (
-            <a
-              href={artifact.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-secondary"
-            >
-              <Github size={16} />
-              <span>View Source Code</span>
-            </a>
-          )}
-        </div>
       </header>
 
       {/* Hero Visual / Blueprint Architecture Cover */}
@@ -239,3 +210,4 @@ export default function ArtifactDetailPage({
     </article>
   );
 }
+
