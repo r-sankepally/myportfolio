@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="600" height="380">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#091428" />
+      <stop offset="100%" stop-color="#0c2340" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="380" fill="url(#bg3)" rx="16"/>
+  
+  <!-- Terminal Frame -->
+  <rect x="50" y="45" width="500" height="290" rx="10" fill="#030712" stroke="#1e293b" stroke-width="2"/>
+  <rect x="50" y="45" width="500" height="32" rx="10" fill="#0f172a"/>
+  <circle cx="75" cy="61" r="5" fill="#ef4444"/>
+  <circle cx="95" cy="61" r="5" fill="#f59e0b"/>
+  <circle cx="115" cy="61" r="5" fill="#10b981"/>
+  <text x="140" y="66" fill="#94a3b8" font-family="monospace" font-size="12">orchestrator-cli ~ pipeline-dag</text>
+
+  <!-- CLI Code and pipeline DAG -->
+  <g font-family="monospace" font-size="12">
+    <text x="75" y="110" fill="#38bdf8">$ cloud-ctl pipeline dispatch --env=production</text>
+    <text x="75" y="132" fill="#4ade80">✔ Ingest cluster provisioned [us-east-1] (120ms)</text>
+    <text x="75" y="154" fill="#4ade80">✔ Parallel shard execution (64/64 tasks verified)</text>
+    <text x="75" y="176" fill="#fbbf24">➜ Zero-downtime rolling canary switchover: 98.4%</text>
+    <text x="75" y="198" fill="#a78bfa">★ Latency target: p99 &lt; 8.4ms | Throughput: 420k rps</text>
+  </g>
+
+  <!-- Pipeline flowchart steps -->
+  <g transform="translate(75, 230)">
+    <rect x="0" y="0" width="85" height="40" rx="6" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="42" y="24" fill="#93c5fd" font-family="monospace" font-size="11" text-anchor="middle">BUILD</text>
+
+    <line x1="85" y1="20" x2="115" y2="20" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3 3"/>
+
+    <rect x="115" y="0" width="85" height="40" rx="6" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+    <text x="157" y="24" fill="#86efac" font-family="monospace" font-size="11" text-anchor="middle">TEST</text>
+
+    <line x1="200" y1="20" x2="230" y2="20" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3 3"/>
+
+    <rect x="230" y="0" width="95" height="40" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+    <text x="277" y="24" fill="#d8b4fe" font-family="monospace" font-size="11" text-anchor="middle">PROVISION</text>
+
+    <line x1="325" y1="20" x2="355" y2="20" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3 3"/>
+
+    <rect x="355" y="0" width="95" height="40" rx="6" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5"/>
+    <text x="402" y="24" fill="#67e8f9" font-family="monospace" font-size="11" text-anchor="middle">DEPLOY</text>
+  </g>
+</svg>
