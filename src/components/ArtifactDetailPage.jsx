@@ -9,7 +9,6 @@ import {
   Check,
   ChevronLeft,
   ChevronRight,
-  FileText,
   Code
 } from 'lucide-react';
 import { artifacts } from '../data/portfolioData';
@@ -202,7 +201,7 @@ export default function ArtifactDetailPage({
               Technologies & Stack
             </h3>
 
-            <div className="artifact-tags" style={{ marginBottom: '1.5rem' }}>
+            <div className="artifact-tags">
               {artifact.tags.map((tag, idx) => (
                 <span
                   key={idx}
@@ -212,31 +211,6 @@ export default function ArtifactDetailPage({
                   {tag}
                 </span>
               ))}
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', borderTop: '1px solid var(--border-subtle)', paddingTop: '1.25rem', fontSize: '0.88rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ color: 'var(--text-muted)' }}>Category</span>
-                <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{artifact.category}</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ color: 'var(--text-muted)' }}>Status</span>
-                <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{artifact.status}</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ color: 'var(--text-muted)' }}>Date</span>
-                <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{artifact.date}</span>
-              </div>
-              {rawMarkdown && (
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.5rem', borderTop: '1px dashed var(--border-subtle)' }}>
-                  <span style={{ color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                    <FileText size={13} /> Source
-                  </span>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--accent-blue)' }}>
-                    {artifact.id}.md
-                  </span>
-                </div>
-              )}
             </div>
           </div>
         </aside>
