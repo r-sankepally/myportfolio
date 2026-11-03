@@ -253,13 +253,11 @@ export const artifacts = [
 export const portfolioBlocks = [
   {
     id: "block-02",
-    tag: "block 02",
     title: "Technical Arsenal & Core Stack",
     description: "Frameworks, languages, cloud platforms, and protocols used across projects."
   },
   {
     id: "block-03",
-    tag: "block 03",
     title: "Engineering Journey & Milestones",
     description: "Professional experience, leadership milestones, and architecture contributions."
   }

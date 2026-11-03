@@ -13,13 +13,9 @@ export default function PortfolioBlocks() {
   return (
     <div className="portfolio-blocks-container">
       {/* ==============================================================
-          BLOCK 02: Technical Arsenal & Skills
+          BLOCK: Technical Arsenal & Skills
           ============================================================== */}
       <section className="portfolio-block" id="block-02">
-        <div className="block-label-badge">
-          <span>block 02</span>
-        </div>
-
         <div className="block-content">
           <div className="block-header-info">
             <h2 className="block-title">Technical Arsenal & Core Stack</h2>
@@ -49,13 +45,9 @@ export default function PortfolioBlocks() {
       </section>
 
       {/* ==============================================================
-          BLOCK 03: Experience & Engineering Milestones
+          BLOCK: Experience & Engineering Milestones
           ============================================================== */}
       <section className="portfolio-block" id="block-03">
-        <div className="block-label-badge">
-          <span>block 03</span>
-        </div>
-
         <div className="block-content">
           <div className="block-header-info">
             <h2 className="block-title">Engineering Journey & Milestones</h2>
