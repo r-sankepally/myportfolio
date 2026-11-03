@@ -52,7 +52,7 @@ export default function App() {
         <div className="ambient-orb ambient-orb-2" />
       </div>
 
-      {/* Dashed Outer Container Frame (As per blueprint wireframe design) */}
+      {/* Main Container */}
       <div className="blueprint-outer-frame">
         {/* Top-Right Navigation Bar */}
         <Navbar

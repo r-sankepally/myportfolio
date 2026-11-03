@@ -179,3 +179,4 @@ export default function PortfolioBlocks({ onSelectArtifact, onOpenArtifactsPage 
     </div>
   );
 }
+
