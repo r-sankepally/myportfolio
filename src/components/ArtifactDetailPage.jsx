@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
+import { marked } from 'marked';
 import {
   ArrowLeft,
   CheckCircle2,
@@ -8,9 +9,11 @@ import {
   Check,
   ChevronLeft,
   ChevronRight,
-  Layers
+  FileText,
+  Code
 } from 'lucide-react';
 import { artifacts } from '../data/portfolioData';
+import { getArtifactMarkdown } from '../utils/markdownLoader';
 
 export default function ArtifactDetailPage({
   artifact,
@@ -18,10 +21,28 @@ export default function ArtifactDetailPage({
   onNavigateArtifact
 }) {
   const [copied, setCopied] = useState(false);
+  const [showRawMarkdown, setShowRawMarkdown] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [artifact?.id]);
+
+  // Set up marked configuration
+  marked.setOptions({
+    gfm: true,
+    breaks: true
+  });
+
+  // Dynamically load Markdown file content for this artifact
+  const rawMarkdown = useMemo(() => {
+    if (!artifact?.id) return null;
+    return getArtifactMarkdown(artifact.id);
+  }, [artifact?.id]);
+
+  const renderedHtml = useMemo(() => {
+    if (!rawMarkdown) return null;
+    return marked.parse(rawMarkdown);
+  }, [rawMarkdown]);
 
   if (!artifact) {
     return (
@@ -60,6 +81,17 @@ export default function ArtifactDetailPage({
         </button>
 
         <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+          {rawMarkdown && (
+            <button
+              onClick={() => setShowRawMarkdown(!showRawMarkdown)}
+              className="btn btn-ghost btn-sm"
+              title="Toggle Raw Markdown vs Rendered View"
+            >
+              <Code size={15} />
+              <span>{showRawMarkdown ? 'Rendered View' : 'View .md'}</span>
+            </button>
+          )}
+
           <button
             onClick={handleShare}
             className="btn btn-ghost btn-sm"
@@ -114,27 +146,52 @@ export default function ArtifactDetailPage({
 
       {/* Deep-Dive Content Sections */}
       <div className="artifact-detail-content-grid">
-        {/* Left Column: Overview & Highlights */}
+        {/* Left Column: Markdown Rendered Content or Fallback */}
         <div className="artifact-detail-main-text">
-          <section className="artifact-detail-section">
-            <h2 className="artifact-section-heading">Overview & System Architecture</h2>
-            <p className="artifact-section-p">
-              {artifact.fullDescription}
-            </p>
-          </section>
+          {rawMarkdown ? (
+            showRawMarkdown ? (
+              /* Raw Markdown View */
+              <div className="glass-card" style={{ padding: '1.5rem', borderRadius: '12px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                  <span style={{ fontSize: '0.8rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>
+                    Raw Markdown • src/artifacts/{artifact.id}.md
+                  </span>
+                </div>
+                <pre style={{ margin: 0, padding: '1rem', background: 'var(--bg-surface)', borderRadius: '8px', overflowX: 'auto', fontSize: '0.88rem', fontFamily: 'var(--font-mono)' }}>
+                  <code>{rawMarkdown}</code>
+                </pre>
+              </div>
+            ) : (
+              /* Rendered Markdown View */
+              <div
+                className="markdown-rendered-content artifact-markdown-article"
+                dangerouslySetInnerHTML={{ __html: renderedHtml }}
+              />
+            )
+          ) : (
+            /* Fallback if no .md file found */
+            <>
+              <section className="artifact-detail-section">
+                <h2 className="artifact-section-heading">Overview & System Architecture</h2>
+                <p className="artifact-section-p">
+                  {artifact.fullDescription}
+                </p>
+              </section>
 
-          {artifact.keyFeatures && artifact.keyFeatures.length > 0 && (
-            <section className="artifact-detail-section">
-              <h2 className="artifact-section-heading">Key Architectural Highlights</h2>
-              <ul className="artifact-highlights-list">
-                {artifact.keyFeatures.map((feat, idx) => (
-                  <li key={idx}>
-                    <CheckCircle2 size={18} />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
+              {artifact.keyFeatures && artifact.keyFeatures.length > 0 && (
+                <section className="artifact-detail-section">
+                  <h2 className="artifact-section-heading">Key Architectural Highlights</h2>
+                  <ul className="artifact-highlights-list">
+                    {artifact.keyFeatures.map((feat, idx) => (
+                      <li key={idx}>
+                        <CheckCircle2 size={18} />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+            </>
           )}
         </div>
 
@@ -170,6 +227,16 @@ export default function ArtifactDetailPage({
                 <span style={{ color: 'var(--text-muted)' }}>Date</span>
                 <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{artifact.date}</span>
               </div>
+              {rawMarkdown && (
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.5rem', borderTop: '1px dashed var(--border-subtle)' }}>
+                  <span style={{ color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                    <FileText size={13} /> Source
+                  </span>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--accent-blue)' }}>
+                    {artifact.id}.md
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         </aside>
@@ -210,4 +277,3 @@ export default function ArtifactDetailPage({
     </article>
   );
 }
-

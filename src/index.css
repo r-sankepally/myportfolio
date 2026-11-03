@@ -1356,3 +1356,145 @@ body {
   text-overflow: ellipsis;
   max-width: 220px;
 }
+
+/* ==========================================================================
+   MARKDOWN RENDERED ARTICLE CONTENT
+   Used in Artifact Full-Page view to style dynamic .md content
+   ========================================================================== */
+.markdown-rendered-content {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  line-height: 1.8;
+  word-break: break-word;
+}
+
+.markdown-rendered-content h1,
+.markdown-rendered-content h2,
+.markdown-rendered-content h3,
+.markdown-rendered-content h4 {
+  color: var(--text-primary);
+  font-weight: 700;
+  line-height: 1.35;
+  margin-top: 2rem;
+  margin-bottom: 0.85rem;
+}
+
+.markdown-rendered-content h1:first-child,
+.markdown-rendered-content h2:first-child {
+  margin-top: 0;
+}
+
+.markdown-rendered-content h1 {
+  font-size: 1.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.5rem;
+}
+
+.markdown-rendered-content h2 {
+  font-size: 1.35rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.4rem;
+}
+
+.markdown-rendered-content h3 {
+  font-size: 1.15rem;
+}
+
+.markdown-rendered-content p {
+  margin: 0 0 1.25rem;
+}
+
+.markdown-rendered-content ul,
+.markdown-rendered-content ol {
+  margin: 0 0 1.35rem 1.25rem;
+  padding: 0;
+}
+
+.markdown-rendered-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.markdown-rendered-content li strong {
+  color: var(--text-primary);
+}
+
+.markdown-rendered-content blockquote {
+  margin: 1.5rem 0;
+  padding: 0.9rem 1.4rem;
+  border-left: 3.5px solid var(--accent-blue);
+  background: var(--bg-surface);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.markdown-rendered-content blockquote p {
+  margin: 0;
+}
+
+.markdown-rendered-content code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  padding: 0.2rem 0.45rem;
+  border-radius: 6px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--accent-blue);
+}
+
+.markdown-rendered-content pre {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  border-radius: 12px;
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  overflow-x: auto;
+}
+
+.markdown-rendered-content pre code {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  display: block;
+}
+
+.markdown-rendered-content hr {
+  margin: 2.25rem 0;
+  border: none;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.markdown-rendered-content a {
+  color: var(--accent-blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.markdown-rendered-content a:hover {
+  opacity: 0.85;
+}
+
+.markdown-rendered-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.92rem;
+}
+
+.markdown-rendered-content th,
+.markdown-rendered-content td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-subtle);
+  text-align: left;
+}
+
+.markdown-rendered-content th {
+  background-color: var(--bg-surface);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
