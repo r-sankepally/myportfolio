@@ -9,7 +9,8 @@ import {
   Check,
   ChevronLeft,
   ChevronRight,
-  Code
+  Code,
+  X
 } from 'lucide-react';
 import { artifacts } from '../data/portfolioData';
 import { getArtifactMarkdown } from '../utils/markdownLoader';
@@ -21,10 +22,20 @@ export default function ArtifactDetailPage({
 }) {
   const [copied, setCopied] = useState(false);
   const [showRawMarkdown, setShowRawMarkdown] = useState(false);
+  const [lightboxImg, setLightboxImg] = useState(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [artifact?.id]);
+
+  // Close lightbox on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setLightboxImg(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   // Set up marked configuration
   marked.setOptions({
@@ -40,8 +51,22 @@ export default function ArtifactDetailPage({
 
   const renderedHtml = useMemo(() => {
     if (!rawMarkdown) return null;
-    return marked.parse(rawMarkdown);
+    // Auto-normalize markdown image paths like (public/artifacts/...) to (./artifacts/...)
+    const normalized = rawMarkdown.replace(
+      /\((?:\/?public\/|\/)?(artifacts\/[^)]+)\)/g,
+      '(./$1)'
+    );
+    return marked.parse(normalized);
   }, [rawMarkdown]);
+
+  const handleContentClick = (e) => {
+    if (e.target && e.target.tagName === 'IMG') {
+      setLightboxImg({
+        src: e.target.src,
+        alt: e.target.alt || artifact.title
+      });
+    }
+  };
 
   if (!artifact) {
     return (
@@ -121,27 +146,26 @@ export default function ArtifactDetailPage({
           {artifact.title}
         </h1>
 
-        <p className="artifact-detail-subtitle">
+        {/*<p className="artifact-detail-subtitle">
           {artifact.shortDescription}
-        </p>
+        </p> */}
       </header>
 
       {/* Hero Visual / Blueprint Architecture Cover */}
-      <div className="artifact-detail-hero-image">
+      {/*<div className="artifact-detail-hero-image">
         <img
           src={artifact.image}
           alt={artifact.title}
           className="artifact-detail-img"
         />
-      </div>
-
+      </div> */}
       {/* Performance Metrics Banner */}
-      {artifact.metrics && (
+      {/* {artifact.metrics && (
         <div className="artifact-detail-metrics-banner">
           <Zap size={20} color="var(--accent-blue)" />
           <span>{artifact.metrics}</span>
         </div>
-      )}
+      )} */}
 
       {/* Deep-Dive Content Sections */}
       <div className="artifact-detail-content-grid">
@@ -164,6 +188,7 @@ export default function ArtifactDetailPage({
               /* Rendered Markdown View */
               <div
                 className="markdown-rendered-content artifact-markdown-article"
+                onClick={handleContentClick}
                 dangerouslySetInnerHTML={{ __html: renderedHtml }}
               />
             )
@@ -248,6 +273,37 @@ export default function ArtifactDetailPage({
           <div />
         )}
       </nav>
+
+      {/* High-Resolution Diagram Lightbox Modal */}
+      {lightboxImg && (
+        <div
+          className="lightbox-overlay"
+          onClick={() => setLightboxImg(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="lightbox-close-btn"
+              onClick={() => setLightboxImg(null)}
+              aria-label="Close lightbox"
+              title="Close (Esc)"
+            >
+              <X size={20} />
+            </button>
+            <img
+              src={lightboxImg.src}
+              alt={lightboxImg.alt}
+              className="lightbox-img"
+            />
+            {lightboxImg.alt && (
+              <p style={{ color: '#ffffff', fontSize: '0.88rem', marginTop: '0.75rem', textAlign: 'center' }}>
+                {lightboxImg.alt}
+              </p>
+            )}
+          </div>
+        </div>
+      )}
     </article>
   );
 }
