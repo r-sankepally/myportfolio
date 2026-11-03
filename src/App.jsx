@@ -4,7 +4,6 @@ import HeroSection from './components/HeroSection';
 import FeaturedArtifacts from './components/FeaturedArtifacts';
 import SkillsSection from './components/SkillsSection';
 import ExperienceSection from './components/ExperienceSection';
-import ContactSection from './components/ContactSection';
 import ArtifactsPage from './components/ArtifactsPage';
 import ArtifactModal from './components/ArtifactModal';
 import Footer from './components/Footer';
@@ -78,7 +77,6 @@ export default function App() {
             />
             <SkillsSection />
             <ExperienceSection />
-            <ContactSection />
           </>
         ) : (
           <ArtifactsPage
@@ -100,3 +98,4 @@ export default function App() {
     </div>
   );
 }
+

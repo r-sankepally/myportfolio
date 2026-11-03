@@ -172,3 +172,4 @@ export default function ArtifactModal({ artifact, onClose }) {
     </div>
   );
 }
+

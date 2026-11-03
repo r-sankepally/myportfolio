@@ -73,11 +73,6 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme }
                     <span>Experience</span>
                   </a>
                 </li>
-                <li>
-                  <a href="#contact" className="nav-link" onClick={() => setMobileMenuOpen(false)}>
-                    <span>Contact</span>
-                  </a>
-                </li>
               </>
             )}
           </ul>
@@ -118,3 +113,4 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme }
     </header>
   );
 }
+

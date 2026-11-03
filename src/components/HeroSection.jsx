@@ -50,7 +50,7 @@ export default function HeroSection({ onExploreArtifacts }) {
             </button>
 
             <a
-              href="#contact"
+              href={`mailto:${socialLinks.email}`}
               className="btn btn-secondary"
             >
               <Mail size={16} />
@@ -183,3 +183,4 @@ export default function HeroSection({ onExploreArtifacts }) {
     </section>
   );
 }
+

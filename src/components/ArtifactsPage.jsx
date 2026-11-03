@@ -228,3 +228,4 @@ export default function ArtifactsPage({ onSelectArtifact }) {
     </div>
   );
 }
+

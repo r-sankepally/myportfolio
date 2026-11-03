@@ -32,7 +32,7 @@ export const personalInfo = {
     { label: "Daily Active Users", value: "150k+" }
   ],
 
-  resumeUrl: "#contact"
+  resumeUrl: "#"
 };
 
 export const socialLinks = {
@@ -227,3 +227,4 @@ export const artifacts = [
     featured: false
   }
 ];
+
