@@ -72,7 +72,7 @@ export default function HeroSection({ onSelectArtifact, onOpenArtifactsPage }) {
                 Hi, I'm <span className="hero-name-highlight">{personalInfo.name}</span>
               </h1>
               <p className="hero-role-tag">
-                {personalInfo.titleDisplay || personalInfo.role}
+                {(personalInfo.titleDisplay || personalInfo.role || '').replace(/[<>]/g, '').trim()}
               </p>
             </div>
           </div>
