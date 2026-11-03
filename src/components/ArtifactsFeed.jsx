@@ -23,7 +23,7 @@ export default function ArtifactsFeed({ onSelectArtifact, onOpenArtifactsPage })
             title={`View ${artifact.title}`}
           >
             <span className="artifacts-feed-item-title">
-              {artifact.shortCode ? `${artifact.shortCode} title` : artifact.title}
+              {artifact.title}
             </span>
             <span className="artifacts-feed-item-date">
               {artifact.date}

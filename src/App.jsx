@@ -2,19 +2,29 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import ArtifactsPage from './components/ArtifactsPage';
-import ArtifactModal from './components/ArtifactModal';
+import ArtifactDetailPage from './components/ArtifactDetailPage';
 import Footer from './components/Footer';
+import { artifacts } from './data/portfolioData';
 
 export default function App() {
   // Hash-based routing ensures full compatibility with GitHub Pages static hosting
-  const getPageFromHash = () => {
+  const parseRouteFromHash = () => {
     const hash = window.location.hash.toLowerCase();
-    if (hash.includes('artifacts')) return 'artifacts';
-    return 'home';
+    if (hash.startsWith('#/artifact/')) {
+      const artifactId = hash.replace('#/artifact/', '').split('?')[0].trim();
+      const found = artifacts.find((a) => a.id.toLowerCase() === artifactId);
+      return { page: 'artifact-detail', artifact: found || artifacts[0] };
+    }
+    if (hash.includes('artifacts')) {
+      return { page: 'artifacts', artifact: null };
+    }
+    return { page: 'home', artifact: null };
   };
 
-  const [activePage, setActivePage] = useState(getPageFromHash());
-  const [selectedArtifact, setSelectedArtifact] = useState(null);
+  const initialRoute = parseRouteFromHash();
+  const [activePage, setActivePage] = useState(initialRoute.page);
+  const [selectedArtifact, setSelectedArtifact] = useState(initialRoute.artifact);
+  const [previousPage, setPreviousPage] = useState('home');
 
   // Dark / Light Theme state with localStorage persistence
   const [theme, setTheme] = useState(() => {
@@ -29,15 +39,39 @@ export default function App() {
   // Sync hash routing on browser back/forward buttons
   useEffect(() => {
     const handleHashChange = () => {
-      setActivePage(getPageFromHash());
+      const route = parseRouteFromHash();
+      setActivePage(route.page);
+      if (route.artifact) {
+        setSelectedArtifact(route.artifact);
+      }
     };
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
   const handlePageChange = (page) => {
+    setPreviousPage(activePage);
     setActivePage(page);
-    window.location.hash = page === 'artifacts' ? '#/artifacts' : '#/';
+    if (page === 'artifacts') {
+      window.location.hash = '#/artifacts';
+    } else {
+      window.location.hash = '#/';
+    }
+  };
+
+  const handleOpenArtifactDetail = (artifact) => {
+    setPreviousPage(activePage === 'artifact-detail' ? previousPage : activePage);
+    setSelectedArtifact(artifact);
+    setActivePage('artifact-detail');
+    window.location.hash = `#/artifact/${artifact.id}`;
+  };
+
+  const handleBackFromDetail = () => {
+    if (previousPage === 'artifacts') {
+      handlePageChange('artifacts');
+    } else {
+      handlePageChange('home');
+    }
   };
 
   const toggleTheme = () => {
@@ -64,15 +98,25 @@ export default function App() {
 
         {/* Main Content Area */}
         <main className="blueprint-main-content">
-          {activePage === 'home' ? (
+          {activePage === 'home' && (
             <HeroSection
-              onSelectArtifact={setSelectedArtifact}
+              onSelectArtifact={handleOpenArtifactDetail}
               onOpenArtifactsPage={() => handlePageChange('artifacts')}
             />
-          ) : (
+          )}
+
+          {activePage === 'artifacts' && (
             <ArtifactsPage
-              onSelectArtifact={setSelectedArtifact}
+              onSelectArtifact={handleOpenArtifactDetail}
               onBackHome={() => handlePageChange('home')}
+            />
+          )}
+
+          {activePage === 'artifact-detail' && (
+            <ArtifactDetailPage
+              artifact={selectedArtifact}
+              onBack={handleBackFromDetail}
+              onNavigateArtifact={handleOpenArtifactDetail}
             />
           )}
         </main>
@@ -80,14 +124,6 @@ export default function App() {
         {/* Footer in bottom-left */}
         <Footer setActivePage={handlePageChange} />
       </div>
-
-      {/* Artifact Detailed Modal */}
-      {selectedArtifact && (
-        <ArtifactModal
-          artifact={selectedArtifact}
-          onClose={() => setSelectedArtifact(null)}
-        />
-      )}
     </div>
   );
 }

@@ -190,7 +190,7 @@ export default function ArtifactsPage({ onSelectArtifact, onBackHome }) {
                 <div className="artifact-footer">
                   <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                     <Eye size={16} />
-                    <span>View Architecture & Specs</span>
+                    <span>View Full Page &rarr;</span>
                   </span>
                   <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
                     {artifact.date}
