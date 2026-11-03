@@ -250,15 +250,24 @@ export const artifacts = [
   }
 ];
 
+export const textBlock = {
+  heading: "About My Work & Philosophy",
+  subheading: "Principles, methodology, and technical focus.",
+  paragraphs: [
+    "I believe great software is defined by clarity, resilience, and obsessive attention to performance. Over the past 6+ years, my work has centered on architecting scalable backends, real-time collaboration engines, and autonomous agent workflows.",
+    "My engineering philosophy emphasizes simple mental models over clever complexity, comprehensive end-to-end type safety, and building accessible, fast web experiences that empower users."
+  ]
+};
+
 export const portfolioBlocks = [
   {
-    id: "block-02",
+    id: "block-skills",
     title: "Technical Arsenal & Core Stack",
     description: "Frameworks, languages, cloud platforms, and protocols used across projects."
   },
   {
-    id: "block-03",
-    title: "Engineering Journey & Milestones",
-    description: "Professional experience, leadership milestones, and architecture contributions."
+    id: "block-text",
+    title: "About My Work & Philosophy",
+    description: "Custom text section with heading and detailed overview."
   }
 ];

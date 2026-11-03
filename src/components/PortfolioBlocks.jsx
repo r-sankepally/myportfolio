@@ -1,6 +1,6 @@
 import React from 'react';
-import { skillCategories, experienceTimeline } from '../data/portfolioData';
-import { Calendar, Terminal, Code2, Server, Cpu, Cloud } from 'lucide-react';
+import { skillCategories, textBlock } from '../data/portfolioData';
+import { Terminal, Code2, Server, Cpu, Cloud } from 'lucide-react';
 
 const categoryIcons = {
   "Frontend & UI": <Code2 size={18} color="var(--accent-primary)" />,
@@ -15,7 +15,7 @@ export default function PortfolioBlocks() {
       {/* ==============================================================
           BLOCK: Technical Arsenal & Skills
           ============================================================== */}
-      <section className="portfolio-block" id="block-02">
+      <section className="portfolio-block" id="block-skills">
         <div className="block-content">
           <div className="block-header-info">
             <h2 className="block-title">Technical Arsenal & Core Stack</h2>
@@ -45,41 +45,22 @@ export default function PortfolioBlocks() {
       </section>
 
       {/* ==============================================================
-          BLOCK: Experience & Engineering Milestones
+          BLOCK: Custom Text Block with Heading
           ============================================================== */}
-      <section className="portfolio-block" id="block-03">
+      <section className="portfolio-block" id="block-text">
         <div className="block-content">
           <div className="block-header-info">
-            <h2 className="block-title">Engineering Journey & Milestones</h2>
-            <p className="block-subtitle">
-              Professional history scaling platforms, architecting systems, and leading engineering initiatives.
-            </p>
+            <h2 className="block-title">{textBlock.heading}</h2>
+            {textBlock.subheading && (
+              <p className="block-subtitle">{textBlock.subheading}</p>
+            )}
           </div>
 
-          <div className="timeline">
-            {experienceTimeline.map((item, idx) => (
-              <div key={idx} className="timeline-item">
-                <div className="timeline-dot" />
-                <div className="glass-card" style={{ padding: '1.25rem 1.5rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.4rem' }}>
-                    <span className="badge" style={{ color: 'var(--accent-primary)', borderColor: 'var(--border-glow)' }}>
-                      <Calendar size={13} />
-                      {item.period}
-                    </span>
-                    <span className="badge" style={{ fontSize: '0.75rem' }}>
-                      {item.badge}
-                    </span>
-                  </div>
-
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--text-primary)' }}>
-                    {item.role} <span style={{ color: 'var(--accent-primary)', fontWeight: 600 }}>@ {item.company}</span>
-                  </h3>
-
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.55, marginTop: '0.4rem' }}>
-                    {item.description}
-                  </p>
-                </div>
-              </div>
+          <div className="custom-text-block-body">
+            {textBlock.paragraphs.map((paragraph, idx) => (
+              <p key={idx} className="custom-text-paragraph">
+                {paragraph}
+              </p>
             ))}
           </div>
         </div>
@@ -87,4 +68,3 @@ export default function PortfolioBlocks() {
     </div>
   );
 }
-
