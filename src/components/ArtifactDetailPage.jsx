@@ -9,7 +9,6 @@ import {
   Check,
   ChevronLeft,
   ChevronRight,
-  Code,
   X
 } from 'lucide-react';
 import { artifacts } from '../data/portfolioData';
@@ -21,7 +20,6 @@ export default function ArtifactDetailPage({
   onNavigateArtifact
 }) {
   const [copied, setCopied] = useState(false);
-  const [showRawMarkdown, setShowRawMarkdown] = useState(false);
   const [lightboxImg, setLightboxImg] = useState(null);
 
   useEffect(() => {
@@ -105,17 +103,6 @@ export default function ArtifactDetailPage({
         </button>
 
         <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-          {rawMarkdown && (
-            <button
-              onClick={() => setShowRawMarkdown(!showRawMarkdown)}
-              className="btn btn-ghost btn-sm"
-              title="Toggle Raw Markdown vs Rendered View"
-            >
-              <Code size={15} />
-              <span>{showRawMarkdown ? 'Rendered View' : 'View .md'}</span>
-            </button>
-          )}
-
           <button
             onClick={handleShare}
             className="btn btn-ghost btn-sm"
@@ -172,26 +159,12 @@ export default function ArtifactDetailPage({
         {/* Left Column: Markdown Rendered Content or Fallback */}
         <div className="artifact-detail-main-text">
           {rawMarkdown ? (
-            showRawMarkdown ? (
-              /* Raw Markdown View */
-              <div className="glass-card" style={{ padding: '1.5rem', borderRadius: '12px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
-                  <span style={{ fontSize: '0.8rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>
-                    Raw Markdown • src/artifacts/{artifact.id}.md
-                  </span>
-                </div>
-                <pre style={{ margin: 0, padding: '1rem', background: 'var(--bg-surface)', borderRadius: '8px', overflowX: 'auto', fontSize: '0.88rem', fontFamily: 'var(--font-mono)' }}>
-                  <code>{rawMarkdown}</code>
-                </pre>
-              </div>
-            ) : (
-              /* Rendered Markdown View */
-              <div
-                className="markdown-rendered-content artifact-markdown-article"
-                onClick={handleContentClick}
-                dangerouslySetInnerHTML={{ __html: renderedHtml }}
-              />
-            )
+            /* Rendered Markdown View */
+            <div
+              className="markdown-rendered-content artifact-markdown-article"
+              onClick={handleContentClick}
+              dangerouslySetInnerHTML={{ __html: renderedHtml }}
+            />
           ) : (
             /* Fallback if no .md file found */
             <>
