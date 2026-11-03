@@ -36,3 +36,4 @@ The **Neural Creative Canvas** solves this with a custom 60 FPS WebGL rendering 
 - **State & Collaboration**: Yjs, WebSockets, WebRTC
 - **Styling**: Tailwind CSS, CSS Modules
 - **Build**: Vite 6, Web Workers
+

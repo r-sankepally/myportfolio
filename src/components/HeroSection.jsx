@@ -1,9 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { personalInfo } from '../data/portfolioData';
 import ArtifactsFeed from './ArtifactsFeed';
 import PortfolioBlocks from './PortfolioBlocks';
 
+/**
+ * Resolves profile photo URLs cleanly, handling leading slashes,
+ * accidental 'public/' prefixes, and URL-encoding filenames with spaces.
+ */
+function resolvePhotoUrl(photo) {
+  if (!photo) return './avatar.svg';
+  let clean = String(photo).trim();
+
+  // If user accidentally included "public/", strip it because Vite serves public/ at root
+  if (clean.startsWith('public/')) {
+    clean = './' + clean.slice(7);
+  } else if (clean.startsWith('/public/')) {
+    clean = '.' + clean.slice(7);
+  }
+
+  // Ensure relative prefix for GitHub Pages compatibility
+  if (!clean.startsWith('./') && !clean.startsWith('/') && !clean.startsWith('http')) {
+    clean = './' + clean;
+  }
+
+  return encodeURI(clean);
+}
+
 export default function HeroSection({ onSelectArtifact, onOpenArtifactsPage }) {
+  // Graceful fallback chain if user path or format has an issue
+  const [photoErrorCount, setPhotoErrorCount] = useState(0);
+
+  const fallbackChain = [
+    resolvePhotoUrl(personalInfo.photo),
+    './avatar.jpeg',
+    './avatar.jpg',
+    './avatar.png',
+    './avatar.svg'
+  ];
+
+  const currentPhotoSrc = fallbackChain[photoErrorCount] || './avatar.svg';
+
+  const handlePhotoError = () => {
+    if (photoErrorCount < fallbackChain.length - 1) {
+      setPhotoErrorCount((prev) => prev + 1);
+    }
+  };
+
   return (
     <div className="hero-wireframe-layout">
       {/* ==============================================================
@@ -17,12 +59,10 @@ export default function HeroSection({ onSelectArtifact, onOpenArtifactsPage }) {
             {/* Blue Outline Circular Avatar */}
             <div className="hero-avatar-circle">
               <img
-                src={personalInfo.photo}
-                alt={personalInfo.name}
+                src={currentPhotoSrc}
+                alt={personalInfo.photoAlt || personalInfo.name}
                 className="hero-avatar-img"
-                onError={(e) => {
-                  e.currentTarget.src = './avatar.svg';
-                }}
+                onError={handlePhotoError}
               />
             </div>
 
@@ -39,7 +79,9 @@ export default function HeroSection({ onSelectArtifact, onOpenArtifactsPage }) {
 
           {/* Dashed Passion Box */}
           <div className="passion-dashed-box">
-            <h2 className="passion-heading">{personalInfo.passionTitle}</h2>
+            {personalInfo.passionTitle && (
+              <h2 className="passion-heading">{personalInfo.passionTitle}</h2>
+            )}
             <div className="passion-lines">
               {personalInfo.passionLines.map((line, idx) => (
                 <p key={idx} className="passion-line">

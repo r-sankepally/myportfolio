@@ -43,3 +43,4 @@ export function getArtifactMarkdown(artifactId) {
 export function getAvailableMarkdownFiles() {
   return Object.keys(markdownModules).map((p) => p.split('/').pop() || '');
 }
+

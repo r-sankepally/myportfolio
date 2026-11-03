@@ -8,27 +8,26 @@
  */
 
 export const personalInfo = {
-  firstName: "Alex",
-  lastName: "Rivera",
-  name: "Alex Rivera",
+  firstName: "Rajashekar Reddy",
+  lastName: "SANKEPALLY",
+  name: "Rajashekar Reddy SANKEPALLY",
   role: "Software Engineer",
-  titleDisplay: "<Software Engineer>",
-  greetingDisplay: "Hi, I'm Alex Rivera", // Or "<Firstname> <Lastname>"
-  
-  passionTitle: "I'm passionate about....",
+  titleDisplay: "Software Engineer",
+  greetingDisplay: "Hi, I'm Rajashekar Reddy SANKEPALLY", // Or "<Firstname> <Lastname>"
+
+  passionTitle: "",
   passionLines: [
-    "architecting distributed systems, autonomous AI agents, and high-throughput real-time backends.",
-    "building accessible, performant interfaces and developer tooling that empower engineering teams."
+    "I am passionate about architecting distributed systems, autonomous AI agents, and high-throughput real-time backends. Building accessible, performant interfaces and developer tooling that empower engineering teams."
   ],
 
   location: "San Francisco, CA (Open to Remote)",
   statusBadge: "Available for high-impact roles & collaborations",
-  
+
   // Profile Photo:
-  // Default points to the included vector illustration in public/avatar.svg
-  // To use your own photo, save it to public/ (e.g., public/myphoto.jpg) and set: photo: "./myphoto.jpg"
-  photo: "./avatar.svg",
-  photoAlt: "Alex Rivera - Profile Photo",
+  // Place any JPEG, JPG, PNG, or SVG into the 'public/' directory (e.g. public/avatar.jpeg)
+  // And reference it with a leading "./" (e.g., photo: "./avatar.jpeg" or photo: "./avatar.jpg")
+  photo: "./avatar.jpeg",
+  photoAlt: "Rajashekar Reddy SANKEPALLY - Profile Photo",
 
   bio: [
     "I am a passionate software engineer specializing in scalable full-stack web applications, distributed systems, and modern AI/agentic tooling. I love turning complex architectural problems into intuitive, blazingly fast products.",

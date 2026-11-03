@@ -35,3 +35,4 @@ This engine ingests 50,000+ financial market events/sec, using binary WebSocket 
 - **Core**: Python 3.11, Rust (WebAssembly)
 - **Web Runtimes**: React 19, TypeScript, Canvas API, WebSockets
 - **Financial Tooling**: TradingView Lightweight Charts, Binary Packets
+
