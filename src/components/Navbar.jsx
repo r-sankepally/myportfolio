@@ -18,7 +18,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme }
   return (
     <header className="wireframe-navbar" aria-label="Main Navigation">
       <div className="wireframe-nav-actions">
-        {/* Home Icon Button (Blue Outline) */}
+        {/* Home Icon Button (Black Outline) */}
         <button
           onClick={handleHomeClick}
           className={`nav-icon-btn ${activePage === 'home' ? 'active' : ''}`}
@@ -28,7 +28,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme }
           <Home size={24} strokeWidth={2.2} />
         </button>
 
-        {/* Artifacts (6) Bordered Button */}
+        {/* Artifacts (6) Button (No Outline) */}
         <button
           onClick={handleArtifactsClick}
           className={`nav-artifacts-btn ${activePage === 'artifacts' ? 'active' : ''}`}
@@ -38,7 +38,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme }
           <span>Artifacts ({artifacts.length})</span>
         </button>
 
-        {/* Theme Toggle Sun / Moon Icon Button */}
+        {/* Theme Toggle Sun / Moon Icon Button (Black Outline) */}
         <button
           onClick={toggleTheme}
           className="nav-icon-btn theme-toggle-btn"
