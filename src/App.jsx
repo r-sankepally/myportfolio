@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
-import FeaturedArtifacts from './components/FeaturedArtifacts';
-import SkillsSection from './components/SkillsSection';
-import ExperienceSection from './components/ExperienceSection';
 import ArtifactsPage from './components/ArtifactsPage';
 import ArtifactModal from './components/ArtifactModal';
 import Footer from './components/Footer';
@@ -21,7 +18,7 @@ export default function App() {
 
   // Dark / Light Theme state with localStorage persistence
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('portfolio-theme') || 'dark';
+    return localStorage.getItem('portfolio-theme') || 'light';
   });
 
   useEffect(() => {
@@ -48,42 +45,41 @@ export default function App() {
   };
 
   return (
-    <div>
-      {/* Background Ambient Orbs */}
+    <div className="portfolio-app-root">
+      {/* Background Ambient Glow */}
       <div className="ambient-glow" aria-hidden="true">
         <div className="ambient-orb ambient-orb-1" />
         <div className="ambient-orb ambient-orb-2" />
-        <div className="ambient-orb ambient-orb-3" />
       </div>
 
-      {/* Navigation */}
-      <Navbar
-        activePage={activePage}
-        setActivePage={handlePageChange}
-        theme={theme}
-        toggleTheme={toggleTheme}
-      />
+      {/* Dashed Outer Container Frame (As per blueprint wireframe design) */}
+      <div className="blueprint-outer-frame">
+        {/* Top-Right Navigation Bar */}
+        <Navbar
+          activePage={activePage}
+          setActivePage={handlePageChange}
+          theme={theme}
+          toggleTheme={toggleTheme}
+        />
 
-      {/* Main Content */}
-      <main className="container">
-        {activePage === 'home' ? (
-          <>
+        {/* Main Content Area */}
+        <main className="blueprint-main-content">
+          {activePage === 'home' ? (
             <HeroSection
-              onExploreArtifacts={() => handlePageChange('artifacts')}
-            />
-            <FeaturedArtifacts
               onSelectArtifact={setSelectedArtifact}
-              onViewAll={() => handlePageChange('artifacts')}
+              onOpenArtifactsPage={() => handlePageChange('artifacts')}
             />
-            <SkillsSection />
-            <ExperienceSection />
-          </>
-        ) : (
-          <ArtifactsPage
-            onSelectArtifact={setSelectedArtifact}
-          />
-        )}
-      </main>
+          ) : (
+            <ArtifactsPage
+              onSelectArtifact={setSelectedArtifact}
+              onBackHome={() => handlePageChange('home')}
+            />
+          )}
+        </main>
+
+        {/* Footer in bottom-left */}
+        <Footer setActivePage={handlePageChange} />
+      </div>
 
       {/* Artifact Detailed Modal */}
       {selectedArtifact && (
@@ -92,10 +88,6 @@ export default function App() {
           onClose={() => setSelectedArtifact(null)}
         />
       )}
-
-      {/* Footer */}
-      <Footer setActivePage={handlePageChange} />
     </div>
   );
 }
-

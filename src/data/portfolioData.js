@@ -8,9 +8,19 @@
  */
 
 export const personalInfo = {
+  firstName: "Alex",
+  lastName: "Rivera",
   name: "Alex Rivera",
-  role: "Full-Stack Engineer & AI Systems Architect",
-  headline: "Crafting resilient software architectures, intelligent agents, and sleek user experiences.",
+  role: "Software Engineer",
+  titleDisplay: "<Software Engineer>",
+  greetingDisplay: "Hi, I'm Alex Rivera", // Or "<Firstname> <Lastname>"
+  
+  passionTitle: "I'm passionate about....",
+  passionLines: [
+    "architecting distributed systems, autonomous AI agents, and high-throughput real-time backends.",
+    "building accessible, performant interfaces and developer tooling that empower engineering teams."
+  ],
+
   location: "San Francisco, CA (Open to Remote)",
   statusBadge: "Available for high-impact roles & collaborations",
   
@@ -96,12 +106,14 @@ export const artifactCategories = [
 export const artifacts = [
   {
     id: "autonomous-agent-engine",
+    shortCode: "Artifact_01",
     title: "Autonomous Multi-Agent Workflow Engine",
+    displayTitle: "Artifact_01: Agentic Workflow Engine",
     category: "AI & Agents",
     shortDescription: "A distributed orchestration runtime that empowers teams of autonomous AI agents to collaborate, plan, and execute multi-step workflows.",
     fullDescription: "A production-grade multi-agent runtime designed for complex asynchronous reasoning, task delegation, and external tool execution. Built with fault-tolerant state recovery, hierarchical supervisor models, and human-in-the-loop inspection mechanisms.",
     image: "./artifacts/artifact-agentic-engine.svg",
-    date: "2024",
+    date: "Oct 02, 2026",
     status: "Featured Artifact",
     statusColor: "emerald",
     tags: ["TypeScript", "Python", "Vector Memory", "LLM Tooling", "Distributed Runtime"],
@@ -118,12 +130,14 @@ export const artifacts = [
   },
   {
     id: "neural-creative-canvas",
+    shortCode: "Artifact_02",
     title: "Real-Time Neural Creative Canvas",
+    displayTitle: "Artifact_02: Neural Creative Canvas",
     category: "Web Applications",
     shortDescription: "Interactive WebGL-accelerated infinite whiteboard with generative AI copilot, real-time multi-cursor syncing, and spatial audio notes.",
     fullDescription: "A fluid, infinite vector canvas designed for creative and architectural collaboration. Combines custom 60 FPS WebGL rendering with real-time CRDT state synchronization, enabling thousands of simultaneous collaborative edits without server bottlenecks.",
     image: "./artifacts/artifact-neural-canvas.svg",
-    date: "2024",
+    date: "Oct 03, 2026",
     status: "Live Production",
     statusColor: "blue",
     tags: ["React", "WebGL", "CRDTs", "WebSockets", "Tailwind CSS"],
@@ -140,12 +154,14 @@ export const artifacts = [
   },
   {
     id: "cloud-pipeline-orchestrator",
+    shortCode: "Artifact_03",
     title: "Distributed Cloud Pipeline Orchestrator",
+    displayTitle: "Artifact_03: Cloud Orchestrator CLI",
     category: "Developer Tools",
     shortDescription: "Declarative CI/CD & cloud infrastructure orchestrator featuring instant DAG visualization and zero-downtime rolling canary deployments.",
     fullDescription: "An ergonomic developer CLI and control plane that abstracts complex Kubernetes and cloud native deployments into elegant declarative manifests. Includes live telemetry streaming and automatic rollbacks on anomalous latency spikes.",
     image: "./artifacts/artifact-cloud-orchestrator.svg",
-    date: "2023",
+    date: "Oct 12, 2026",
     status: "Open Source",
     statusColor: "purple",
     tags: ["Go", "Kubernetes", "gRPC", "Docker", "Prometheus"],
@@ -162,12 +178,14 @@ export const artifacts = [
   },
   {
     id: "raft-consensus-kv-store",
+    shortCode: "Artifact_04",
     title: "High-Throughput Raft Distributed KV Store",
+    displayTitle: "Artifact_04: Raft Consensus KV Store",
     category: "Systems & Infrastructure",
     shortDescription: "Fault-tolerant key-value database implementing Raft consensus protocol with Log-Structured Merge (LSM) storage engine.",
     fullDescription: "An exploratory distributed storage engine engineered to deeply study consensus algorithms under extreme network partitions and chaos engineering conditions. Achieves high linearizable write throughput through batched fsync and zero-copy serialization.",
     image: "./artifacts/artifact-kv-store.svg",
-    date: "2023",
+    date: "Oct 18, 2026",
     status: "Research Prototype",
     statusColor: "teal",
     tags: ["Go", "Raft Consensus", "LSM-Tree", "Distributed Systems", "Protobuf"],
@@ -184,12 +202,14 @@ export const artifacts = [
   },
   {
     id: "quantum-design-system",
+    shortCode: "Artifact_05",
     title: "Quantum Design System & Component Studio",
+    displayTitle: "Artifact_05: Quantum Design System",
     category: "Web Applications",
     shortDescription: "Accessible, themeable, enterprise-grade design system featuring 40+ components with automatic token generation and WCAG AAA compliance.",
     fullDescription: "A comprehensive design system and component architecture built for modern web applications. Provides unified design token synchronization between Figma and code, seamless dark/light modes, keyboard navigation, and zero-runtime CSS footprint.",
     image: "./artifacts/artifact-design-system.svg",
-    date: "2023",
+    date: "Oct 24, 2026",
     status: "Live Package",
     statusColor: "emerald",
     tags: ["React", "CSS Architecture", "Accessibility (a11y)", "Design Tokens", "Figma API"],
@@ -206,12 +226,14 @@ export const artifacts = [
   },
   {
     id: "realtime-market-intelligence",
+    shortCode: "Artifact_06",
     title: "High-Frequency Market Streaming Engine",
+    displayTitle: "Artifact_06: Market Streaming Engine",
     category: "Systems & Infrastructure",
     shortDescription: "Ultra-low latency financial data pipeline aggregating streaming tick data, sentiment analysis, and order-book heatmaps.",
     fullDescription: "Engineered to ingest and visualize real-time crypto and equity market streams with sub-10ms browser rendering. Uses binary WebSocket protocols and client-side web workers to offload calculations from the main UI thread.",
     image: "./artifacts/artifact-market-intelligence.svg",
-    date: "2022",
+    date: "Oct 29, 2026",
     status: "Production Demo",
     statusColor: "blue",
     tags: ["Python", "Rust", "WebSockets", "Web Workers", "TradingView Lightweight"],
@@ -228,3 +250,23 @@ export const artifacts = [
   }
 ];
 
+export const portfolioBlocks = [
+  {
+    id: "block-01",
+    tag: "block 01",
+    title: "Featured Systems & Architectures",
+    description: "Deep dive into selected production systems, autonomous agents, and cloud distributed tools."
+  },
+  {
+    id: "block-02",
+    tag: "block 02",
+    title: "Technical Arsenal & Core Stack",
+    description: "Frameworks, languages, cloud platforms, and protocols used across projects."
+  },
+  {
+    id: "block-03",
+    tag: "block 03",
+    title: "Engineering Journey & Milestones",
+    description: "Professional experience, leadership milestones, and architecture contributions."
+  }
+];

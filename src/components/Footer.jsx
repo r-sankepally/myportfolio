@@ -1,68 +1,42 @@
-import React from 'react';
-import { ArrowUp, Github, Heart } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Check } from 'lucide-react';
 import { personalInfo, socialLinks } from '../data/portfolioData';
 
 export default function Footer({ setActivePage }) {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const [copied, setCopied] = useState(false);
+
+  const handleEmailClick = (e) => {
+    // If user clicks, open mailto, and also copy to clipboard
+    navigator.clipboard.writeText(socialLinks.email).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
   };
 
   return (
-    <footer className="footer">
-      <div className="container footer-inner">
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
-            <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>{personalInfo.name}</span>
-            <span style={{ color: 'var(--text-muted)' }}>•</span>
-            <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>Portfolio & Artifacts</span>
-          </div>
-          <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-            © {new Date().getFullYear()} {personalInfo.name}. Built with Vite & React. Deployed to GitHub Pages.
-          </p>
+    <footer className="wireframe-footer">
+      <div className="footer-left-content">
+        <div className="footer-branding-row">
+          <span className="footer-name">{personalInfo.name}</span>
+          <span className="footer-dot">•</span>
+          <span className="footer-sub">Portfolio & Artifacts</span>
+
+          {/* Blue Outline Mail Icon Button */}
+          <a
+            href={`mailto:${socialLinks.email}`}
+            onClick={handleEmailClick}
+            className="footer-mail-btn"
+            title={`Email ${personalInfo.name} (${socialLinks.email})`}
+            aria-label="Send Email"
+          >
+            {copied ? <Check size={18} color="var(--accent-emerald)" /> : <Mail size={18} strokeWidth={2} />}
+          </a>
         </div>
 
-        {/* Quick Links */}
-        <div className="footer-links">
-          <button
-            onClick={() => {
-              setActivePage('home');
-              scrollToTop();
-            }}
-            className="footer-link"
-            style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}
-          >
-            Home
-          </button>
-          <button
-            onClick={() => {
-              setActivePage('artifacts');
-              scrollToTop();
-            }}
-            className="footer-link"
-            style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}
-          >
-            Artifacts
-          </button>
-          <a
-            href={socialLinks.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer-link"
-          >
-            GitHub
-          </a>
-          <button
-            onClick={scrollToTop}
-            className="btn btn-ghost btn-sm"
-            style={{ padding: '0.3rem 0.6rem' }}
-            title="Back to top"
-            aria-label="Back to top"
-          >
-            <ArrowUp size={16} />
-          </button>
-        </div>
+        <p className="footer-copyright">
+          © {new Date().getFullYear()} {personalInfo.name}. Built with Vite & React. Deployed to GitHub Pages.
+        </p>
       </div>
     </footer>
   );
 }
-

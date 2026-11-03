@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import { Search, Filter, Layers, ExternalLink, Github, Eye, Sparkles, X } from 'lucide-react';
+import { Search, Filter, Layers, ExternalLink, Github, Eye, Sparkles, X, ArrowLeft } from 'lucide-react';
 import { artifacts, artifactCategories } from '../data/portfolioData';
 
-export default function ArtifactsPage({ onSelectArtifact }) {
+export default function ArtifactsPage({ onSelectArtifact, onBackHome }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
@@ -30,7 +30,18 @@ export default function ArtifactsPage({ onSelectArtifact }) {
   };
 
   return (
-    <div style={{ padding: '3.5rem 0 5rem' }}>
+    <div style={{ padding: '1rem 0 4rem' }}>
+      {onBackHome && (
+        <button
+          onClick={onBackHome}
+          className="btn btn-ghost btn-sm"
+          style={{ marginBottom: '1.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+        >
+          <ArrowLeft size={16} />
+          <span>Back to Home</span>
+        </button>
+      )}
+
       {/* Header */}
       <div className="section-header">
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
